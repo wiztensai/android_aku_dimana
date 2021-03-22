@@ -1,16 +1,13 @@
 package com.jetwiz.akudimana.ui
 
-import android.app.Activity
-import android.content.Context
+import android.app.ProgressDialog
 import android.content.Intent
 import android.location.Location
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -25,7 +22,6 @@ import com.jetwiz.akudimana.R
 import com.jetwiz.akudimana.databinding.FMapBinding
 import com.jetwiz.akudimana.dialog.DF_Filter
 import com.jetwiz.akudimana.dialog.DF_Result
-import com.jetwiz.akudimana.domain.Result
 import com.jetwiz.akudimana.util.U_Maps
 import com.jetwiz.akudimana.viewmodel.VM_Map
 import timber.log.Timber
@@ -37,6 +33,7 @@ class F_Map:Fragment(), OnMapReadyCallback {
     private lateinit var uMaps: U_Maps
     private var mLocation: Location? = null
     private lateinit var viewmodel: VM_Map
+    private lateinit var progressDialog:ProgressDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,12 +52,17 @@ class F_Map:Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        progressDialog = ProgressDialog(context)
+        progressDialog.setMessage("Loading")
+
         onListener()
         onObserve()
     }
 
     private fun onObserve() {
         viewmodel.placeData.observe(viewLifecycleOwner, Observer {
+            progressDialog.dismiss()
+
             if (it.places.isEmpty()) {
                 // nothing
             } else {
@@ -87,6 +89,7 @@ class F_Map:Fragment(), OnMapReadyCallback {
 
         bind.btnFind.setOnClickListener {
             mLocation?.let {
+                progressDialog.show()
                 viewmodel.findPlace(it)
             }
         }
