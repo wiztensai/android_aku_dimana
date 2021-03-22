@@ -93,14 +93,14 @@ class DF_Result(var result: Result = Result(), var viewmodel:VM_Map) : DialogFra
                 l for two-wheeler
                 w for walking */
 
-                val gmmIntentUri = Uri.parse("google.navigation:q=${it.location!!.lat},${it.location!!.lng}&mode=l")
-                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                mapIntent.setPackage("com.google.android.apps.maps")
-                startActivity(mapIntent)
+//                val gmmIntentUri = Uri.parse("google.navigation:q=${it.location!!.lat},${it.location!!.lng}&mode=l")
+//                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+//                mapIntent.setPackage("com.google.android.apps.maps")
+//                startActivity(mapIntent)
 
-//                val url = "https://www.google.com/maps/dir/?api=1&destination=${it.location!!.lat},${it.location!!.lng}&travelmode=two-wheeler"
-//                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-//                startActivity(intent)
+                val url = "https://www.google.com/maps/dir/?api=1&destination=${it.location!!.lat},${it.location!!.lng}&travelmode=two-wheeler"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(intent)
             }
 //            dismiss()
         }

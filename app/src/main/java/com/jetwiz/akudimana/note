@@ -1,0 +1,6 @@
+next feature:
+- quote asyik di df_result. contoh:
+"sudah jangan pilih-pilih, langsung gass"
+"semakin ngga milih, semakin menantang. kapan lagi bisa begini?"
+
+- jika jarak current place pertama dan kedua, dibawah 2 km. maka pake data cache aja. karena hasilnya sama aja.
