@@ -2,8 +2,8 @@ Hi Dear,
 
 Berikut hasil technical test:
 
-Design : https://www.figma.com/file/IubSWWiIexnWvOVUIaJBwk/random-place?node-id=0%3A1
-APK: https://drive.google.com/file/d/1NP0xrjlrrtKgWuiFXLdTZ-uGJE5C48zS/view?usp=sharing
+- Design : https://www.figma.com/file/IubSWWiIexnWvOVUIaJBwk/random-place?node-id=0%3A1
+- APK: https://drive.google.com/file/d/1NP0xrjlrrtKgWuiFXLdTZ-uGJE5C48zS/view?usp=sharing
 
 Fitur:
 - Current Location in Google Map
