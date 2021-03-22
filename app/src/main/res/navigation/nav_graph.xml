@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_f_Map">
+
+    <fragment
+        android:id="@+id/nav_f_Opening"
+        android:name="com.jetwiz.akudimana.ui.F_Opening"
+        android:label="F_Opening" >
+        <action
+            android:id="@+id/action_f_Opening_to_f_Map"
+            app:destination="@id/nav_f_Map" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_f_Map"
+        android:name="com.jetwiz.akudimana.ui.F_Map"
+        android:label="F_Map" >
+        <action
+            android:id="@+id/action_nav_f_Map_to_nav_f_Opening"
+            app:destination="@id/nav_f_Opening" />
+    </fragment>
+</navigation>
