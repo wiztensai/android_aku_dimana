@@ -47,8 +47,8 @@ class F_Map:Fragment(), OnMapReadyCallback {
         return bind.root
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         viewmodel = ViewModelProviders.of(this, VM_Map.VMFactory(requireActivity().application)).get(VM_Map::class.java)
 
@@ -63,7 +63,6 @@ class F_Map:Fragment(), OnMapReadyCallback {
         viewmodel.placeData.observe(viewLifecycleOwner, Observer {
             if (it.places.isEmpty()) {
                 // nothing
-                val tes = ""
             } else {
                 val filtered = it.places.filter {
                     it.businessStatus.equals("OPERATIONAL")

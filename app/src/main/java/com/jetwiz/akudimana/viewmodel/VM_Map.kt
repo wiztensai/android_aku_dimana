@@ -30,7 +30,7 @@ class VM_Map(context: Context) : ViewModel() {
         repo = RepoMap(context)
         placeData.value = PlaceData(mutableListOf(), NetworkState.LOADING)
     }
-
+    fun <T> T?.whenNull(block: () -> Unit) = this ?: block()
     fun findPlace(mLocation: Location) {
         viewModelScope.launch {
             try {
@@ -39,7 +39,7 @@ class VM_Map(context: Context) : ViewModel() {
                 firstResult.nextPageToken?.also {
                     _places = firstResult.results
                     getNextPage(it)
-                }?: run {
+                }.whenNull {
                     placeData.value = PlaceData(firstResult.results, NetworkState.LOADED)
                 }
 
@@ -59,7 +59,7 @@ class VM_Map(context: Context) : ViewModel() {
 
                 nextPageResult.nextPageToken?.also {
                     getNextPage(it)
-                }?: run {
+                }.whenNull {
                     placeData.value = PlaceData(_places, NetworkState.LOADED)
                 }
 

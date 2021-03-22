@@ -102,7 +102,9 @@ class DF_Result(var result: Result = Result(), var viewmodel:VM_Map) : DialogFra
 //                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
 //                startActivity(intent)
             }
-            dismiss()
+//            dismiss()
         }
     }
+
+
 }
