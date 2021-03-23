@@ -6,7 +6,7 @@ Resources:
 
 Fitur:
 - Current Location in Google Map
-- Fitur tambahan: menemukan tempat hiburan secara random di sekitar current location menggunakan Google Place API.
+- Random Location: menemukan tempat hiburan secara random di sekitar current location menggunakan Google Place API.
 Fitur ini dibuat agar kita tidak bosan pergi kesana terus, jadi pengguna diharapkan dapat mengatasi kebosanan dengan adanya fitur ini.
 
 Best Regards,\
