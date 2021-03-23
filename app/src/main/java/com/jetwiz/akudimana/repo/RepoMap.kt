@@ -19,8 +19,8 @@ class RepoMap(var context: Context) {
     }
 
     suspend fun findPlace(mLocation: Location):PlacesModel {
-        val filterType = prefs.getPrefs().getString(CST.FILTER_TYPE, CST.DEF_TYPE)!!
-        val radius = prefs.getPrefs().getInt(CST.RADIUS, CST.DEF_RADIUS)
+        val filterType = prefs.getPrefs().getString(CST.FILTER_TYPE_S, CST.DEF_TYPE)!!
+        val radius = prefs.getPrefs().getInt(CST.RADIUS_I, CST.DEF_RADIUS)
 
         val lat = mLocation.latitude.toString()
         val long = mLocation.longitude.toString()

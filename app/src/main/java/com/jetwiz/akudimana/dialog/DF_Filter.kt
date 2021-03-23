@@ -17,6 +17,7 @@ import com.google.android.material.slider.Slider
 import com.jetwiz.akudimana.base.CST
 import com.jetwiz.akudimana.databinding.DfFilterBinding
 import com.jetwiz.akudimana.util.U_DpPxConverter
+import timber.log.Timber
 import wazma.punjabi.helper.U_Prefs
 
 @SuppressLint("ValidFragment")
@@ -33,14 +34,13 @@ class DF_Filter() : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         bind = DfFilterBinding.inflate(layoutInflater)
+        prefs = U_Prefs(bind.btnSubmit.context)
         return bind.root
     }
 
     override fun onStart() {
         super.onStart()
         if (dialog != null) {
-            prefs = U_Prefs(bind.btnSubmit.context)
-
             dialog!!.getWindow()!!.setLayout(Constraints.LayoutParams.MATCH_PARENT, Constraints.LayoutParams.WRAP_CONTENT) // full width dialog
             val back = ColorDrawable(Color.TRANSPARENT)
             val inset = InsetDrawable(back, U_DpPxConverter.dpToPixel(16, bind.btnSubmit.context))
@@ -64,11 +64,15 @@ class DF_Filter() : DialogFragment() {
                 Toast.makeText(context,"Please choose one filter criteria!", Toast.LENGTH_SHORT).show()
             }
 
-            prefs.setData(CST.FILTER_TYPE, filterType)
-                .setData(CST.RADIUS, sliderValue)
+            prefs.setData(CST.FILTER_TYPE_S, filterType)
+                .setData(CST.RADIUS_I, sliderValue)
 
             dismiss()
         }
+
+        val radius = prefs.getPrefs().getInt(CST.RADIUS_I, CST.DEF_RADIUS)
+        bind.sliderRadius.value = radius.toFloat()
+        bind.tvRadius.text = (bind.sliderRadius.value / 1000).toInt().toString() +" Km"
 
         bind.sliderRadius.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
             override fun onStartTrackingTouch(slider: Slider) {
@@ -81,6 +85,13 @@ class DF_Filter() : DialogFragment() {
                 bind.tvRadius.text = (slider.value / 1000).toInt().toString() +" Km"
             }
         })
+
+        val type = prefs.getPrefs().getString(CST.FILTER_TYPE_S, CST.DEF_TYPE)
+        bind.chipGroupFilter.forEach {child ->
+            if (child.tag.toString().equals(type)) {
+                (child as Chip).setChecked(true)
+            }
+        }
 
         bind.chipGroupFilter.forEach {child ->
             (child as? Chip)?.setOnCheckedChangeListener { _, _ ->
