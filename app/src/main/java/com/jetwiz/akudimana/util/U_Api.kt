@@ -24,7 +24,7 @@ object U_Api {
         get() {
             val logging = HttpLoggingInterceptor()
             val clientBuilder = OkHttpClient.Builder()
-            logging.level = HttpLoggingInterceptor.Level.HEADERS
+            logging.level = HttpLoggingInterceptor.Level.BODY
             clientBuilder.addInterceptor(logging)
             return clientBuilder.build()
         }

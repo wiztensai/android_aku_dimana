@@ -39,13 +39,13 @@ class DF_Result(var result: Result = Result(), var viewmodel:VM_Map) : DialogFra
 
     override fun onStart() {
         super.onStart()
-        if (dialog != null) {
-            prefs = U_Prefs(bind.btnGoHere.context)
+        dialog?.let { it
+            prefs = U_Prefs(it.context)
 
-            dialog!!.getWindow()!!.setLayout(Constraints.LayoutParams.MATCH_PARENT, Constraints.LayoutParams.WRAP_CONTENT) // full width dialog
+            it.getWindow()!!.setLayout(Constraints.LayoutParams.MATCH_PARENT, Constraints.LayoutParams.WRAP_CONTENT) // full width dialog
             val back = ColorDrawable(Color.TRANSPARENT)
             val inset = InsetDrawable(back, U_DpPxConverter.dpToPixel(16, bind.btnGoHere.context))
-            dialog!!.window!!.setBackgroundDrawable(inset)
+            it.window!!.setBackgroundDrawable(inset)
         }
     }
 

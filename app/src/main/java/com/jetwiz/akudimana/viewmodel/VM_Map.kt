@@ -30,7 +30,7 @@ class VM_Map(context: Context) : ViewModel() {
         repo = RepoMap(context)
         placeData.value = PlaceData(mutableListOf(), NetworkState.LOADING)
     }
-    fun <T> T?.whenNull(block: () -> Unit) = this ?: block()
+
     fun findPlace(mLocation: Location) {
         viewModelScope.launch {
             try {
@@ -39,8 +39,12 @@ class VM_Map(context: Context) : ViewModel() {
                 firstResult.nextPageToken?.also {
                     _places = firstResult.results
                     getNextPage(it)
-                }.whenNull {
-                    placeData.value = PlaceData(firstResult.results, NetworkState.LOADED)
+                }?: kotlin.run {
+                    if (firstResult.results.isEmpty()) {
+                        placeData.value = PlaceData(firstResult.results, NetworkState.error("Place not found!"))
+                    } else {
+                        placeData.value = PlaceData(firstResult.results, NetworkState.LOADED)
+                    }
                 }
 
             } catch (t: Throwable) {
@@ -59,7 +63,7 @@ class VM_Map(context: Context) : ViewModel() {
 
                 nextPageResult.nextPageToken?.also {
                     getNextPage(it)
-                }.whenNull {
+                }?: kotlin.run {
                     placeData.value = PlaceData(_places, NetworkState.LOADED)
                 }
 

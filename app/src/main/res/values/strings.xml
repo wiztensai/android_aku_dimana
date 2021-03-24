@@ -1,4 +1,24 @@
 <resources>
     <string name="app_name">Aku Dimana</string>
     <string name="title_activity_maps">Aku Dimana</string>
+    <string-array name="field_types">
+        <item>art_gallery</item>
+        <item>cafe</item>
+        <item>zoo</item>
+        <item>tourist_attraction</item>
+        <item>shopping_mall</item>
+        <item>restaurant</item>
+        <item>park</item>
+        <item>library</item>
+        <item>aquarium</item>
+        <item>bakery</item>
+        <item>bowling_alley</item>
+        <item>campground</item>
+        <item>city_hall</item>
+        <item>mosque</item>
+        <item>pet_store</item>
+        <item>stadium</item>
+        <item>store</item>
+        <item>university</item>
+    </string-array>
 </resources>

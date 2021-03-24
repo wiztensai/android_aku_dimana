@@ -22,6 +22,8 @@ import com.jetwiz.akudimana.R
 import com.jetwiz.akudimana.databinding.FMapBinding
 import com.jetwiz.akudimana.dialog.DF_Filter
 import com.jetwiz.akudimana.dialog.DF_Result
+import com.jetwiz.akudimana.util.NetworkState
+import com.jetwiz.akudimana.util.Status
 import com.jetwiz.akudimana.util.U_Maps
 import com.jetwiz.akudimana.viewmodel.VM_Map
 import timber.log.Timber
@@ -64,7 +66,11 @@ class F_Map:Fragment(), OnMapReadyCallback {
             progressDialog.dismiss()
 
             if (it.places.isEmpty()) {
-                // nothing
+                if (it.networkState.status == Status.FAILED) {
+                    it.networkState.msg?.let {
+                        Toast.makeText(bind.root.context, it, Toast.LENGTH_SHORT).show()
+                    }
+                }
             } else {
                 val filtered = it.places.filter {
                     it.businessStatus.equals("OPERATIONAL")

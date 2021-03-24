@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Filter"
+        android:text="Select One"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,73 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:singleSelection="true">
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbArtGallery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Art Gallery"
-            android:tag="art_gallery"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbCafe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cafe"
-            android:tag="cafe"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbLibrary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Library"
-            android:tag="library"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbPark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Park"
-            android:tag="park"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbRestaurant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Restaurant"
-            android:tag="restaurant"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbShoppingMall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shopping Mall"
-            android:tag="shopping_mall"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbTouristAttraction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tourist Attraction"
-            android:tag="tourist_attraction"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:id="@+id/rbZoo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Zoo"
-            android:tag="zoo"/>
-
-    </com.google.android.material.chip.ChipGroup>
+        app:singleSelection="true"/>
 
     <com.google.android.material.slider.Slider
         android:id="@+id/sliderRadius"
