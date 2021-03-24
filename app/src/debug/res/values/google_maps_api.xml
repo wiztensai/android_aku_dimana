@@ -22,5 +22,5 @@
     -->
 <!--    AIzaSyDOMG7ypd9SITqMUfCJBLssK3U-Pc1nSag-->
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBFqzxkMG8bZJX9xccV1zwlQ1rStnsdPd4</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false"></string>
 </resources>
