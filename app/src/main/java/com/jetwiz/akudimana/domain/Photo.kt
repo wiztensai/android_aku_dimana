@@ -19,4 +19,8 @@ class Photo {
     @SerializedName("width")
     @Expose
     var width: Int? = null
+
+    constructor(height: Int?) {
+        this.height = height
+    }
 }

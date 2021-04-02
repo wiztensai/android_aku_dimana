@@ -18,15 +18,15 @@ import com.jetwiz.akudimana.base.CST
 import com.jetwiz.akudimana.databinding.DfResultBinding
 import com.jetwiz.akudimana.domain.Result
 import com.jetwiz.akudimana.util.U_DpPxConverter
+import com.jetwiz.akudimana.util.U_Prefs
 import com.jetwiz.akudimana.viewmodel.VM_Map
-import wazma.punjabi.helper.U_Prefs
 
 
 @SuppressLint("ValidFragment")
 class DF_Result(var result: Result = Result(), var viewmodel:VM_Map) : DialogFragment() {
 
     lateinit var bind: DfResultBinding
-    lateinit var prefs:U_Prefs
+    lateinit var prefs: U_Prefs
 
     override fun onCreateView(
         inflater: LayoutInflater,

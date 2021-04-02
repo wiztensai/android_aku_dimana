@@ -19,12 +19,14 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.jetwiz.akudimana.R
+import com.jetwiz.akudimana.base.BaseApp
+import com.jetwiz.akudimana.base.CST
 import com.jetwiz.akudimana.databinding.FMapBinding
 import com.jetwiz.akudimana.dialog.DF_Filter
 import com.jetwiz.akudimana.dialog.DF_Result
-import com.jetwiz.akudimana.util.NetworkState
 import com.jetwiz.akudimana.util.Status
 import com.jetwiz.akudimana.util.U_Maps
+import com.jetwiz.akudimana.util.U_Prefs
 import com.jetwiz.akudimana.viewmodel.VM_Map
 import timber.log.Timber
 
@@ -36,6 +38,9 @@ class F_Map:Fragment(), OnMapReadyCallback {
     private var mLocation: Location? = null
     private lateinit var viewmodel: VM_Map
     private lateinit var progressDialog:ProgressDialog
+    val prefs by lazy {
+        U_Prefs(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,10 +81,27 @@ class F_Map:Fragment(), OnMapReadyCallback {
                     it.businessStatus.equals("OPERATIONAL")
                 }
 
-                val rnds = (0..filtered.size-1).random()
-                val place = filtered.get(rnds)
+                val filterType = prefs.getPrefs().getString(CST.FILTER_TYPE_S, CST.DEF_TYPE)!!
+                val radius = prefs.getPrefs().getInt(CST.RADIUS_I, CST.DEF_RADIUS)
+                val tempKey = "$radius$filterType"
 
-                DF_Result(place, viewmodel).show(childFragmentManager, null)
+                val baseApp = (requireContext().applicationContext as BaseApp)
+                val max = filtered.size
+
+                // random place in no repeat
+                if (BaseApp.rKey.equals(tempKey)) {
+                    val rnd = baseApp.randomNumberNoRepeat(max)
+                    val place = filtered.get(rnd)
+
+                    DF_Result(place, viewmodel).show(childFragmentManager, null)
+                } else {
+                    // reset randomNumberInNoRepeat sekaligus init randomnya
+                    val rnd = baseApp.initRandom(max)
+                    val place = filtered.get(rnd)
+
+                    DF_Result(place, viewmodel).show(childFragmentManager, null)
+                    BaseApp.rKey = "$radius$filterType"
+                }
             }
         })
     }

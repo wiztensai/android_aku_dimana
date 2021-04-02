@@ -20,15 +20,14 @@ import com.jetwiz.akudimana.R
 import com.jetwiz.akudimana.base.CST
 import com.jetwiz.akudimana.databinding.DfFilterBinding
 import com.jetwiz.akudimana.util.U_DpPxConverter
-import timber.log.Timber
-import wazma.punjabi.helper.U_Prefs
+import com.jetwiz.akudimana.util.U_Prefs
 
 @SuppressLint("ValidFragment")
 class DF_Filter() : DialogFragment() {
 
     private lateinit var bind: DfFilterBinding
     private var filterType = "park" // default
-    private lateinit var prefs:U_Prefs
+    private lateinit var prefs: U_Prefs
 
     override fun onCreateView(
         inflater: LayoutInflater,

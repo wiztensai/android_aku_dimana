@@ -11,9 +11,9 @@ import com.jetwiz.akudimana.domain.PlacesModel
 import com.jetwiz.akudimana.domain.Result
 import com.jetwiz.akudimana.repo.RepoMap
 import com.jetwiz.akudimana.util.NetworkState
+import com.jetwiz.akudimana.util.U_Prefs
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import wazma.punjabi.helper.U_Prefs
 
 data class PlaceData(var places : MutableList<Result>, var networkState: NetworkState)
 

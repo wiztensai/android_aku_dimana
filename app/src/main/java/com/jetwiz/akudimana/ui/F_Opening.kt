@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.jetwiz.akudimana.R
 import com.jetwiz.akudimana.base.CST
 import com.jetwiz.akudimana.databinding.FOpeningBinding
-import wazma.punjabi.helper.U_Prefs
+import com.jetwiz.akudimana.util.U_Prefs
 
 class F_Opening:Fragment() {
 
